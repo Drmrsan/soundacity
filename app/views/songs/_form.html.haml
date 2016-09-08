@@ -1,6 +1,10 @@
-=simple_form_for @song do |f|
+=simple_form_for @song, html: { multipart: true } do |f|
 	=f.input :title, class:"form-control"
 	=f.input :description, class:"form-control"
-	=f.file_field :media
+	=f.label :cover, label: "Upload cover image for song"
+	=f.file_field :cover
 	%br/
+	=f.input :remote_cover_url, label: "or paste cover URL here"
+	%br/
+	=f.file_field :audio
 	=f.button :submit, "Add song to your collection"
