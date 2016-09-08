@@ -1,0 +1,42 @@
+@import "bootstrap-sprockets"
+@import "bootstrap"
+@import "_colors"
+@import "_typography"
+
+.navbar-default
+	background-color: $dark_green
+	border-color: $dark_green
+	border-radius: 0
+	margin-bottom: 0
+	.navbar-brand
+		color: $pink
+		font:
+			weight: 600
+			size: 1.5em
+		text-transform: uppercase
+		&:hover
+			color: $pink
+
+
+.navbar-default .navbar-nav > li > a
+	color: $white	
+	&:hover
+		color: $light_green
+
+.jumbotron
+	background: url(header.jpg), no-repeat
+	background-position: bottom
+	background-size: cover
+	height: 500px
+	margin: 0
+	position: relative
+	h3
+		color: $white
+		font-weight: 400
+		padding: 200px 0 20px 0
+		margin: 0
+	p
+		color: $white
+	.form-control
+		padding: 24px 25px
+
