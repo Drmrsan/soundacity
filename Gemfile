@@ -16,6 +16,7 @@ gem 'simple_form', '~> 3.3', '>= 3.3.1'
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'mini_magick'
 gem 'fog'
+gem 'wavesurfer', '~> 0.0.2'
 
 group :development, :test do
   gem 'byebug'

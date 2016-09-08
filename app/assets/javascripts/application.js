@@ -14,4 +14,8 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
+//= require wavesurfer
+//= require wavesurfer-plugins
 //= require_tree .
+
+
