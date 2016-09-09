@@ -1,25 +1,52 @@
-%h2
-	=song.title
-%p	
-	=song.description if song.description
-%p
-	=link_to "Edit", edit_song_path(song)
-.image
-	=image_tag song.cover.url if song.cover.url
-%p
-	-# =audio_tag(@song.audio, controls: true) if @song.audio
+.row
+	#song
+		%p.update_status
+			%i.fa.fa-share-square 
+			%i #{song.user.email} posted a #{song.title} #{time_ago_in_words(song.created_at)}
+		.col-xs-2
+			.image
+				=link_to (image_tag song.cover.url(:mid)), song_path(song) if song.cover.url
 
-#wave
-	=link_to "Play/Stop", "", :onclick => "wavesurfer.playPause(); return false", class:"btn btn-default"
+		.col-xs-10
+			.song_content
+				.play_button
+					=link_to "", :onclick => "wavesurfer#{song.id}.playPause(); return false", class:"btn btn-default btn-lg" do
+						%i.fa.fa-play
 
-:javascript
+				.song_title
+					%p
+						=song.user.email
+					%h4
+						=link_to song.title, song_path(song)
 
-	var wavesurfer = Object.create(WaveSurfer);
+				.song_category
+					%span.badge
+						Category
 
-	wavesurfer.init({
-	    container: document.querySelector('#wave'),
-	    waveColor: 'violet',
-	    progressColor: 'purple'
-	});
+				.song_wave{ :id => "wave_#{song.id.to_s}" }
 
-	wavesurfer.load('#{ song.audio }');
+				.song_details
+					=link_to "#", class:"btn btn-default btn-sm" do
+						%i.fa.fa-heart
+						%span 22
+					=link_to "#", class:"btn btn-default btn-sm" do
+						%i.fa.fa-comments
+						%span 12
+
+
+
+	:javascript
+
+		var wavesurfer#{song.id} = Object.create(WaveSurfer);
+
+		wavesurfer#{song.id}.init({
+		    container: document.querySelector('#wave_#{song.id}'),
+		    waveColor: '#456990',
+		    progressColor: '#F45B69',
+		    barWidth: 2,
+				reflection: true,
+		    hideScrollbar: true,
+		    height: 128
+		});
+
+		wavesurfer#{song.id}.load('#{ song.audio }');

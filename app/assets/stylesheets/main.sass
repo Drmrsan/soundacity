@@ -2,6 +2,7 @@
 @import "bootstrap"
 @import "_colors"
 @import "_typography"
+@import "font-awesome"
 
 .navbar-default
 	background-color: $dark_green
@@ -40,3 +41,40 @@
 	.form-control
 		padding: 24px 25px
 
+h4.home_page_title
+	padding: 50px 0
+
+#song
+	padding: 50px 0
+	.col-xs-2,.col-xs-10
+		padding-left: 0
+		padding-right: 0
+
+p.update_status
+	color: grey
+
+.song_title
+	display: inline-block
+	p,h4
+		margin: 0
+	a:hover
+		text-decoration: none
+
+.play_button
+	display: inline-block
+	margin-top: -10px
+	a.btn-default
+		color: $white
+		border-color: $pink
+		border-radius: 2em
+		background: $pink
+		margin-top: -25px
+
+.song_category
+	float: right
+	.badge
+		font-weight: normal
+
+.song_details
+	margin-top: 10px
+	float: right

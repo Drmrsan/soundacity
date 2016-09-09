@@ -17,5 +17,3 @@
 //= require wavesurfer
 //= require wavesurfer-plugins
 //= require_tree .
-
-
