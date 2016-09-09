@@ -1,0 +1,25 @@
+%h2
+	=song.title
+%p	
+	=song.description if song.description
+%p
+	=link_to "Edit", edit_song_path(song)
+.image
+	=image_tag song.cover.url if song.cover.url
+%p
+	-# =audio_tag(@song.audio, controls: true) if @song.audio
+
+#wave
+	=link_to "Play/Stop", "", :onclick => "wavesurfer.playPause(); return false", class:"btn btn-default"
+
+:javascript
+
+	var wavesurfer = Object.create(WaveSurfer);
+
+	wavesurfer.init({
+	    container: document.querySelector('#wave'),
+	    waveColor: 'violet',
+	    progressColor: 'purple'
+	});
+
+	wavesurfer.load('#{ song.audio }');
