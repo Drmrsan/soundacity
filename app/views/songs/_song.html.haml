@@ -2,8 +2,8 @@
 	.container
 		#song
 			%p.update_status
-				%i.fa.fa-share-square 
-				%i #{song.user.email} posted a #{song.title} #{time_ago_in_words(song.created_at)} ago
+				=image_tag song.user.avatar.url(:thumb), class:"img-circle"
+				%i #{song.user.username} posted a #{song.title} #{time_ago_in_words(song.created_at)} ago
 			.col-xs-2
 				.image
 					=link_to (image_tag song.cover.url(:mid)), song_path(song) if song.cover.url
@@ -16,7 +16,7 @@
 
 					.song_title
 						%p
-							=song.user.email
+							=song.user.username
 						%h4
 							=link_to song.title, song_path(song)
 

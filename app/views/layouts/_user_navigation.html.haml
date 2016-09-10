@@ -25,11 +25,11 @@
             =link_to "Upload", new_song_path
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              =current_user.email
+              =current_user.username
               %span.caret
             %ul.dropdown-menu{:role => "menu"}
               %li
-                %a{:href => "#"} Profile
+                =link_to "Profile", edit_user_registration_path
               %li
                 %a{:href => "#"} Likes
               %li

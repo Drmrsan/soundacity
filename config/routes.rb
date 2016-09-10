@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # Root page of application
   root 'pages#index'
 
+  resources :users, only: [:index, :show]
+  
   resources :songs do
     resources :comments, only: [:create]
   end

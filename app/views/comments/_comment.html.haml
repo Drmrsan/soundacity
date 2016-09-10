@@ -1,9 +1,9 @@
-%p	
-	=comment.user.email
-	wrote:
+%p
+	=image_tag comment.user.avatar.url(:thumb), class:"img-circle"
+	=link_to comment.user.username, "#"
 %p
 	=comment.content
 %p.small.text-muted
 	Created
-	=#time_ago_in_words(comment.created_at) 
+	=time_ago_in_words(comment.created_at) 
 	ago

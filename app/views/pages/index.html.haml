@@ -8,7 +8,7 @@
 			.col-xs-3
 				.panel.panel-default
 					.panel-body
-						%p #{song.user.email}
+						%p #{song.user.username}
 						=link_to (image_tag song.cover.url(:mid)), song_path(song)
 					.panel-fotter
 						=song.title

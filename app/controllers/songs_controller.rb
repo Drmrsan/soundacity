@@ -19,6 +19,7 @@ class SongsController < ApplicationController
   end
 
   def show
+    @user = @song.user
   end
 
   def edit

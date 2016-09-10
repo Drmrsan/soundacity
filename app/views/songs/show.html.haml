@@ -29,22 +29,26 @@
 		.image
 			=image_tag @song.cover.url(:show_page) if @song.cover.url
 
-		-# %p
-		-# 	=link_to "Edit", edit_song_path(@song)
-		-# 	=link_to "Delete", song_path(@song), method: :delete, data: { confirm: "Are you sure?" }
+		%p
+			=link_to "Edit", edit_song_path(@song)
+			=link_to "Delete", song_path(@song), method: :delete, data: { confirm: "Are you sure?" }
 	
-
-
-.row.white
+.row.white.song_user_details
 	.col-xs-3
 		%p User details
+		=image_tag @user.avatar.url(:small), class:"img-circle"
 	.col-xs-9
+		.song_description
+			%p
+				=@song.description
 		.comments_section
 			-if @song.comments.present?
 				%p.text-muted
 					Recent comments
+					%hr/
 					=render @song.comments
-.row.white
+					
+.row.white.song_comment_details
 	.col-xs-12
 		%p
 			=render 'comments/comment_form'
