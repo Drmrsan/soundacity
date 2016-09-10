@@ -1,0 +1,28 @@
+-if @index
+	.nav.navbar.navbar-default.navbar-index
+		.container
+			.navbar-header
+				%ul.nav.navbar-nav
+					=link_to root_path, class:"navbar-brand-index" do
+						%i.fa.fa-soundcloud
+						Soundacity
+
+				%ul.nav.navbar-nav.navbar-right
+					%li
+						=link_to "Create an account", new_user_registration_path, class:"sign_up_button"
+					%li
+						=link_to "Log in", new_user_session_path, class:"login_button"
+-else
+	.nav.navbar.navbar-default.navbar-index-song-preview
+		.container
+			.navbar-header
+				%ul.nav.navbar-nav
+					=link_to root_path, class:"navbar-brand-index" do
+						%i.fa.fa-soundcloud
+						Soundacity
+
+				%ul.nav.navbar-nav.navbar-right
+					%li
+						=link_to "Create an account", new_user_registration_path, class:"sign_up_button"
+					%li
+						=link_to "Log in", new_user_session_path, class:"login_button"

@@ -1,0 +1,9 @@
+%p	
+	=comment.user.email
+	wrote:
+%p
+	=comment.content
+%p.small.text-muted
+	Created
+	=#time_ago_in_words(comment.created_at) 
+	ago

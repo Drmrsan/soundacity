@@ -3,5 +3,9 @@ class PagesController < ApplicationController
   	if user_signed_in?
   		redirect_to home_path
   	end
+
+  	@songs = Song.all
+
+  	@index = true
   end
 end

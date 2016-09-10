@@ -1,25 +1,69 @@
-%h2
-	=@song.title
-%p
-	=truncate(@song.description, length: 100) if @song.description
-%p
-	=link_to "Edit", edit_song_path(@song)
-	=link_to "Delete", song_path(@song), method: :delete, data: { confirm: "Are you sure?" }
-.image
-	=image_tag @song.cover.url if @song.cover.url
+.row.song_show_details
+	.col-xs-8
+		.song_content
+			.play_button
+				=link_to "", :onclick => "wavesurfer#{@song.id}.playPause(); return false", class:"btn btn-default btn-lg" do
+					%i.fa.fa-play
 
-#wave
-	=link_to "", :onclick => "wavesurfer#{@song.id}.playPause(); return false", class:"btn btn-default" do
-		%i.fa.fa-play
+			.song_title
+				%p
+					=@song.user.email
+				%h4
+					=link_to @song.title, song_path(@song)
 
-:javascript
+			.song_category
+				%span.badge
+					Category
 
-	var wavesurfer = Object.create(WaveSurfer);
+			.song_wave{ :id => "wave_#{@song.id.to_s}" }
 
-	wavesurfer.init({
-	    container: document.querySelector('#wave'),
-	    waveColor: 'violet',
-	    progressColor: 'purple'
-	});
+			.song_details
+				=link_to "#", class:"btn btn-default btn-sm" do
+					%i.fa.fa-heart
+					%span 22
+				=link_to "#", class:"btn btn-default btn-sm" do
+					%i.fa.fa-comments
+					%span 12
 
-	wavesurfer.load('#{ @song.audio }');
+	.col-xs-4.text-center
+		.image
+			=image_tag @song.cover.url(:show_page) if @song.cover.url
+
+		-# %p
+		-# 	=link_to "Edit", edit_song_path(@song)
+		-# 	=link_to "Delete", song_path(@song), method: :delete, data: { confirm: "Are you sure?" }
+	
+
+
+.row.white
+	.col-xs-3
+		%p User details
+	.col-xs-9
+		.comments_section
+			-if @song.comments.present?
+				%p.text-muted
+					Recent comments
+					=render @song.comments
+.row.white
+	.col-xs-12
+		%p
+			=render 'comments/comment_form'
+
+	:javascript
+
+		var wavesurfer#{@song.id} = Object.create(WaveSurfer);
+
+		wavesurfer#{@song.id}.init({
+		    container: document.querySelector('#wave_#{@song.id}'),
+		    waveColor: 'white',
+		    progressColor: '#F45B69',
+		    barWidth: 2,
+				reflection: true,
+		    hideScrollbar: true,
+		    height: 200
+		});
+
+		wavesurfer#{@song.id}.load('#{ @song.audio }');
+
+
+

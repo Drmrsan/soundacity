@@ -4,25 +4,75 @@
 @import "_typography"
 @import "font-awesome"
 
+body
+	background: #F2F2F2
+.white
+	background: $white
+
 .navbar-default
 	background-color: $dark_green
-	border-color: $dark_green
+	border:none
+	border-color: transparent
 	border-radius: 0
 	margin-bottom: 0
 	.navbar-brand
-		color: $pink
-		font:
-			weight: 600
-			size: 1.5em
+		color: $white
+		background: $pink
 		text-transform: uppercase
+		padding: 7px 15px
 		&:hover
-			color: $pink
+			color: $white
+			background: $pink
 
+.navbar-brand-index
+	color: $pink
+	font-size: 1.4em
+	font-weight: 600
+	padding: 7px
+	text-transform: uppercase
+	&:hover
+		color: $white
+		text-decoration: none
+	i
+		color: $white
 
 .navbar-default .navbar-nav > li > a
 	color: $white	
 	&:hover
 		color: $light_green
+
+.navbar-header
+	float: none
+
+.navbar-index
+	background: transparent
+	border-bottom: 0
+	border-top: 3px solid $pink
+	z-index: 999
+	.navbar-header
+		float: none
+		padding: 15px 20px
+		margin-top: -2px
+	.navbar-nav > li > a
+		padding-top: 8px
+		padding-bottom: 8px
+
+.navbar-index-song-preview
+	background: $dark_green
+	.navbar-right
+		padding-top: 5px
+	.navbar-nav > li > a
+		padding-top: 8px
+		padding-bottom: 8px
+
+.sign_up_button
+	border: 1px solid $white
+
+.login_button
+	margin-left: 10px
+
+.container .jumbotron
+	border-radius: 0
 
 .jumbotron
 	background: url(header.jpg), no-repeat
@@ -31,6 +81,7 @@
 	height: 500px
 	margin: 0
 	position: relative
+	margin-top: -78px
 	h3
 		color: $white
 		font-weight: 400
@@ -43,6 +94,16 @@
 
 h4.home_page_title
 	padding: 50px 0
+
+.recent_songs
+	padding-top: 30px
+	background: $white
+	.panel
+		text-align: center
+		border: none
+		.panel-body
+			padding: 20px 0
+
 
 #song
 	padding: 50px 0
@@ -78,3 +139,15 @@ p.update_status
 .song_details
 	margin-top: 10px
 	float: right
+
+.row.song_show_details
+	padding: 30px
+	background: linear-gradient(to right, #6D657F, #312E3E)
+	.song_title
+		h4 a
+			color: $white
+	.song_wave
+		margin-top: 20px
+
+.comments_section
+	padding: 30px 0
