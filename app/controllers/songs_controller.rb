@@ -41,7 +41,7 @@ class SongsController < ApplicationController
 
   private
     def song_params
-      params.require(:song).permit(:title, :description, :cover, :remote_cover_url, :audio)
+      params.require(:song).permit(:title, :description, :cover, :remote_cover_url, :audio, category_ids:[])
     end
 
     def set_song

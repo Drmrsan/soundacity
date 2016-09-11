@@ -26,13 +26,16 @@
 
 					.song_wave{ :id => "wave_#{song.id.to_s}" }
 
-					.song_details
+					.song_buttons
 						=link_to "#", class:"btn btn-default btn-sm" do
 							%i.fa.fa-heart
 							%span 22
 						=link_to "#", class:"btn btn-default btn-sm" do
 							%i.fa.fa-comments
 							%span 12
+						=link_to "#", class:"btn btn-default btn-sm" do
+							%i.fa.fa-share
+							%span share
 
 
 
@@ -47,7 +50,7 @@
 		    barWidth: 2,
 				reflection: true,
 		    hideScrollbar: true,
-		    height: 128
+		    height: 90
 		});
 
 		wavesurfer#{song.id}.load('#{ song.audio }');

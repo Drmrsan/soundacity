@@ -1,57 +1,65 @@
-.row.song_show_details
-	.col-xs-8
-		.song_content
-			.play_button
-				=link_to "", :onclick => "wavesurfer#{@song.id}.playPause(); return false", class:"btn btn-default btn-lg" do
-					%i.fa.fa-play
+.container.white	
+	.row.song_show_details
+		.col-xs-8
+			.song_content
+				.play_button
+					=link_to "", :onclick => "wavesurfer#{@song.id}.playPause(); return false", class:"btn btn-default btn-lg" do
+						%i.fa.fa-play
 
-			.song_title
-				%p
-					=@song.user.email
-				%h4
-					=link_to @song.title, song_path(@song)
+				.song_title
+					%p
+						=link_to @song.user.email, "#"
+					%h4
+						=link_to @song.title, song_path(@song)
 
-			.song_category
-				%span.badge
-					Category
+				.song_category
+					-@song.categories.each do |sc|
+						%span.badge
+							=sc.name
 
-			.song_wave{ :id => "wave_#{@song.id.to_s}" }
+				.song_wave{ :id => "wave_#{@song.id.to_s}" }
 
-			.song_details
-				=link_to "#", class:"btn btn-default btn-sm" do
-					%i.fa.fa-heart
-					%span 22
-				=link_to "#", class:"btn btn-default btn-sm" do
-					%i.fa.fa-comments
-					%span 12
+				.song_buttons
+					=link_to "#", class:"btn btn-default btn-sm" do
+						%i.fa.fa-heart
+						%span 22
+					=link_to "#", class:"btn btn-default btn-sm" do
+						%i.fa.fa-comments
+						%span 12
 
-	.col-xs-4.text-center
-		.image
-			=image_tag @song.cover.url(:show_page) if @song.cover.url
+		.col-xs-4.text-center
+			.image
+				=image_tag @song.cover.url(:show_page) if @song.cover.url
 
-		%p
-			=link_to "Edit", edit_song_path(@song)
-			=link_to "Delete", song_path(@song), method: :delete, data: { confirm: "Are you sure?" }
-	
-.row.white.song_user_details
-	.col-xs-3
-		%p User details
-		=image_tag @user.avatar.url(:small), class:"img-circle"
-	.col-xs-9
-		.song_description
 			%p
-				=@song.description
-		.comments_section
-			-if @song.comments.present?
-				%p.text-muted
-					Recent comments
-					%hr/
-					=render @song.comments
-					
-.row.white.song_comment_details
-	.col-xs-12
-		%p
-			=render 'comments/comment_form'
+				=link_to "Edit", edit_song_path(@song)
+				=link_to "Delete", song_path(@song), method: :delete, data: { confirm: "Are you sure?" }
+		
+	.row.white.song_user_details
+		.col-xs-3.text-center
+			.well
+				=image_tag @user.avatar.url(:small), class:"img-circle"
+				%h5.text-muted
+					= link_to @user.username, "#"
+				%p
+					%i.fa.fa-users 22
+				%p
+					=link_to "Follow", "#", class:"btn btn-sm btn-default btn-follow"
+		.col-xs-9
+			.song_description
+				%p
+					=@song.description
+			.comments_section
+				-if @song.comments.present?
+					%p.text-muted
+						Recent comments
+						%hr/
+						=render @song.comments
+						
+	.row.white.song_comment_details
+		.col-xs-12
+			%p
+				=render 'comments/comment_form'
 
 	:javascript
 

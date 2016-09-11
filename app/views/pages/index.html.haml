@@ -1,15 +1,15 @@
-=render 'layouts/header'
-
-.recent_songs
-	.row
-		%h4.text-center Hear recently uploaded tracks
-		%br/
-		-@songs.each do |song|
-			.col-xs-3
-				.panel.panel-default
-					.panel-body
-						%p #{song.user.username}
-						=link_to (image_tag song.cover.url(:mid)), song_path(song)
-					.panel-fotter
-						=song.title
+.container
+	=render 'layouts/header'
+	.recent_songs
+		.row
+			%h4.text-center Hear recently uploaded tracks
+			%br/
+			-@songs.each do |song|
+				.col-xs-3
+					.panel.panel-default
+						.panel-body
+							%p #{song.user.username}
+							=link_to (image_tag song.cover.url(:mid)), song_path(song)
+						.panel-fotter
+							=song.title
 			
