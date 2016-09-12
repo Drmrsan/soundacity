@@ -28,7 +28,7 @@
 					.song_wave{ :id => "wave_#{song.id.to_s}" }
 
 					.song_buttons
-						=link_to like_song_path(song), class:"btn btn-default btn-sm" do
+						=link_to like_song_path(song), method: :put, class:"btn btn-default btn-sm" do
 							%i.fa.fa-heart
 							=song.get_upvotes.size
 						.btn.btn-default.btn-sm
