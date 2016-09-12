@@ -27,6 +27,8 @@
             =link_to "Upload", new_song_path
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              %span
+                =image_tag current_user.avatar.url, size: "20x20", class:'img-circle'
               =current_user.username
               %span.caret
             %ul.dropdown-menu{:role => "menu"}

@@ -8,4 +8,9 @@ class PagesController < ApplicationController
 
   	@index = true
   end
+
+  def collection
+  	@songs = Song.all
+    song = current_user.songs
+  end
 end

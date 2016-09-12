@@ -20,20 +20,22 @@
 				.song_wave{ :id => "wave_#{@song.id.to_s}" }
 
 				.song_buttons
-					=link_to "#", class:"btn btn-default btn-sm" do
+					=link_to like_song_path(@song), method: :put, class:"btn btn-default btn-sm" do
 						%i.fa.fa-heart
-						%span 22
-					=link_to "#", class:"btn btn-default btn-sm" do
+						%span 
+							=@song.get_upvotes.size
+					.btn.btn-default.btn-sm
 						%i.fa.fa-comments
-						%span 12
+						%span
+							=@song.comments.count
 
 		.col-xs-4.text-center
 			.image
 				=image_tag @song.cover.url(:show_page) if @song.cover.url
-
-			%p
-				=link_to "Edit", edit_song_path(@song)
-				=link_to "Delete", song_path(@song), method: :delete, data: { confirm: "Are you sure?" }
+			-if user_signed_in?
+				%p
+					=link_to "Edit", edit_song_path(@song)
+					=link_to "Delete", song_path(@song), method: :delete, data: { confirm: "Are you sure?" }
 		
 	.row.white.song_user_details
 		.col-xs-3.text-center
@@ -56,26 +58,28 @@
 						%hr/
 						=render @song.comments
 						
-	.row.white.song_comment_details
-		.col-xs-12
-			%p
-				=render 'comments/comment_form'
+	-if user_signed_in?
+		.row.white.song_comment_details
+			.col-xs-12
+				%p
+					=render 'comments/comment_form'
 
-	:javascript
+:javascript
+	var wavesurfer#{@song.id} = Object.create(WaveSurfer);
 
-		var wavesurfer#{@song.id} = Object.create(WaveSurfer);
+	wavesurfer#{@song.id}.init({
+	    container: document.querySelector('#wave_#{@song.id}'),
+	    waveColor: 'white',
+	    progressColor: '#F45B69',
+	    barWidth: 2,
+			reflection: true,
+	    hideScrollbar: true,
+	    height: 200
+	});
 
-		wavesurfer#{@song.id}.init({
-		    container: document.querySelector('#wave_#{@song.id}'),
-		    waveColor: 'white',
-		    progressColor: '#F45B69',
-		    barWidth: 2,
-				reflection: true,
-		    hideScrollbar: true,
-		    height: 200
-		});
+	wavesurfer#{@song.id}.load('#{ @song.audio }');
 
-		wavesurfer#{@song.id}.load('#{ @song.audio }');
+
 
 
 

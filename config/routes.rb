@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   
   resources :songs do
+    member do
+      put "like", to: "songs#upvote"
+    end  
+
     resources :comments, only: [:create]
   end
 end

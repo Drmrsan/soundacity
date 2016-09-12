@@ -17,7 +17,9 @@ gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'mini_magick'
 gem 'fog'
 gem 'wavesurfer', '~> 0.0.2'
+gem 'wavesurfer-rails'
 gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
+gem 'acts_as_votable', '~> 0.10.0'
 
 group :development, :test do
   gem 'byebug'

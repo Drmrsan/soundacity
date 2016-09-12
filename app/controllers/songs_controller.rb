@@ -39,6 +39,12 @@ class SongsController < ApplicationController
     redirect_to songs_path
   end
 
+  def upvote
+    @song = Song.find(params[:id])
+    @song.upvote_by current_user
+    redirect_to :back
+  end
+
   private
     def song_params
       params.require(:song).permit(:title, :description, :cover, :remote_cover_url, :audio, category_ids:[])

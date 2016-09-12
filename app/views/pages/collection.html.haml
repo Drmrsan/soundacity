@@ -1,1 +1,16 @@
-%h2 Song Collection
+.row
+	.container
+		%h2 Favourites
+
+		-if current_user.find_voted_items.present?
+			-for song in current_user.find_voted_items do
+				.col-xs-3.text-center
+					.panel.panel-default
+						.panel-body
+							%p #{song.user.username}
+							=link_to (image_tag song.cover.url(:mid)), song_path(song)
+						.panel-fotter
+							=song.title
+		-else
+			%p Go out there and add some track to your Collection!
+			=link_to "Latest Songs", root_path, class:"btn btn-default "

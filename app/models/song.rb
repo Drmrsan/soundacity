@@ -7,6 +7,7 @@ class Song < ActiveRecord::Base
 	validates :user_id, presence: true
 	mount_uploader :cover, CoverUploader
 	mount_uploader :audio, AudioUploader
+	acts_as_votable
 
 	def self.search(query)
 	  where("title like ?", "%#{query}%")
