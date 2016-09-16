@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   resources :users, only: [:index, :show]
+  resources :categories, only: [:index, :show]
   
   resources :songs do
     member do

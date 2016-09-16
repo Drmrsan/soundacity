@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
 
   has_many :songs
   has_many :comments, dependent: :destroy
+  validates :username, presence: true
 end

@@ -1,0 +1,22 @@
+.container
+	.row
+		.col-xs-3.col-xs-offset-4
+			.well.text-center.user_show
+				=image_tag @user.avatar.url(:small), class:"img-circle"
+				%h5.text-muted
+					= link_to @user.username, "#"
+				%p
+					%i.fa.fa-users 22
+				%p
+					=link_to "Follow", "#", class:"btn btn-sm btn-default btn-follow"
+
+	.row
+		%h4 Songs uploaded by #{@user.username}
+		%br/
+		-@song.each do |song|
+			.col-xs-3.text-center
+				.panel.panel-default
+					.panel-body
+						=link_to (image_tag song.cover.url(:mid)), song_path(song)
+					.panel-fotter
+						=song.title

@@ -12,5 +12,6 @@ class PagesController < ApplicationController
   def collection
   	@songs = Song.all
     song = current_user.songs
+    @categories = Category.all
   end
 end

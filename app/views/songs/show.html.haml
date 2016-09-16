@@ -8,7 +8,7 @@
 
 				.song_title
 					%p
-						=link_to @song.user.email, "#"
+						=link_to @song.user.username, "#" if @song.user.username
 					%h4
 						=link_to @song.title, song_path(@song)
 
@@ -20,10 +20,17 @@
 				.song_wave{ :id => "wave_#{@song.id.to_s}" }
 
 				.song_buttons
-					=link_to like_song_path(@song), method: :put, class:"btn btn-default btn-sm" do
-						%i.fa.fa-heart
-						%span 
-							=@song.get_upvotes.size
+					-if user_signed_in?
+						=link_to like_song_path(@song), method: :put, class:"btn btn-default btn-sm" do
+							%i.fa.fa-heart
+							%span 
+								=@song.get_upvotes.size
+					-else
+						.btn.btn-default.btn-sm
+							%i.fa.fa-heart
+								%span 
+									=@song.get_upvotes.size
+
 					.btn.btn-default.btn-sm
 						%i.fa.fa-comments
 						%span

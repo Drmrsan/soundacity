@@ -17,3 +17,8 @@
 //= require wavesurfer
 //= require wavesurfer-plugins
 //= require_tree .
+
+$('#myTabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
