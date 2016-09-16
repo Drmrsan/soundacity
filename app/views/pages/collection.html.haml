@@ -1,41 +1,42 @@
-.row
-	.container
-		
-		%ul.nav.nav-tabs{:role => "tablist"}
-			%li.active{:role => "presentation"}
-				%a{"aria-controls" => "favourites", "data-toggle" => "tab", :href => "#favourites", :role => "tab"} Favourites
-			%li{:role => "presentation"}
-				%a{"aria-controls" => "bbcat", "data-toggle" => "tab", :href => "#bbcat", :role => "tab"} Browse by categories
+.container
 
-		.tab-content
-			#favourites.tab-pane.fade.in.active{:role => "tabpanel"}
-				-if current_user.find_voted_items.present?
-					-for song in current_user.find_voted_items do
-						.col-xs-3.text-center
-							.panel.panel-default
-								.panel-body
-									%p #{song.user.username}
-									=link_to (image_tag song.cover.url(:mid)), song_path(song), class:"img-responsive"
-								.panel-fotter
-									=song.title
-				-else
-					%p Go out there and add some track to your Collection!
-					=link_to "Latest Songs", root_path, class:"btn btn-default "
+	%h4 Select Category:
 		
-			#bbcat.tab-pane.fade{:role => "tabpanel"}
-				-@categories.each do |category|
-					%h4.bbcn
-						=link_to category.name, category_path(category) if !category.songs.blank?
-					.row
-						.container
-							-for song in category.songs do
-								.col-xs-3.text-center
-									.panel.panel-default
-										.panel-body
-											%p #{song.user.username}
-											=link_to (image_tag song.cover.url(:mid)), song_path(song)
-										.panel-fotter
-											=song.title
+	%ul.nav.nav-tabs{:role => "tablist"}
+		%li.active{:role => "presentation"}
+			%a{"aria-controls" => "favourites", "data-toggle" => "tab", :href => "#favourites", :role => "tab"} Favourites
+		%li{:role => "presentation"}
+			%a{"aria-controls" => "bbcat", "data-toggle" => "tab", :href => "#bbcat", :role => "tab"} Browse by categories
+
+	.tab-content
+		#favourites.tab-pane.fade.in.active{:role => "tabpanel"}
+			-if current_user.find_voted_items.present?
+				-for song in current_user.find_voted_items do
+					.col-xs-3.text-center
+						.panel.panel-default
+							.panel-body
+								%p #{song.user.username}
+								=link_to (image_tag song.cover.url(:mid)), song_path(song), class:"img-responsive"
+							.panel-fotter
+								=song.title
+			-else
+				%p Go out there and add some track to your Collection!
+				=link_to "Latest Songs", root_path, class:"btn btn-default "
+	
+		#bbcat.tab-pane.fade{:role => "tabpanel"}
+			-@categories.each do |category|
+				%h4.bbcn
+					=link_to category.name, category_path(category) if !category.songs.blank?
+				.row
+					.container
+						-for song in category.songs do
+							.col-xs-3.text-center
+								.panel.panel-default
+									.panel-body
+										%p #{song.user.username}
+										=link_to (image_tag song.cover.url(:mid)), song_path(song)
+									.panel-fotter
+										=song.title
 
 
 
