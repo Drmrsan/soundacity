@@ -41,9 +41,10 @@
 			.image
 				=image_tag @song.cover.url(:show_page) if @song.cover.url
 			-if user_signed_in?
-				%p
-					=link_to "Edit", edit_song_path(@song)
-					=link_to "Delete", song_path(@song), method: :delete, data: { confirm: "Are you sure?" }
+				%p.edit_song_buttons
+					-if user_signed_in? && current_user.id == @song.user_id
+						=link_to "Edit", edit_song_path(@song), class:"btn btn-default btn-sm"
+						=link_to "Delete", song_path(@song), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-follow btn-sm"
 		
 	.row.white.song_user_details
 		.col-xs-3.text-center
