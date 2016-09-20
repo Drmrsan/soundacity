@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :notifications, foreign_key: :recipient_id
   has_many :songs
   has_many :comments, dependent: :destroy
   validates :username, presence: true
