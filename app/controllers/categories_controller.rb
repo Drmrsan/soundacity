@@ -2,9 +2,6 @@ class CategoriesController < ApplicationController
 	
 	def index
 		@categories = Category.all
-	end
-
-	def new
 		@category = Category.new
 	end
 
@@ -12,9 +9,9 @@ class CategoriesController < ApplicationController
 			@category = Category.create(category_params)
 			if @category.save
 				flash[:success] = "Category successfully created!"
-				redirect_to categories_path
+				redirect_to :back
 			else
-				render 'new'
+				redirect_to :back
 		end
 
 	end

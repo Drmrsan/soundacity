@@ -1,9 +1,15 @@
-.row
-	.container.text-center
+.container.text-center
+	.row	
 		%h4 List of song categories
-		%h4 Add new category:
-			=render "categories/form"
+		%br/
 		-for category in @categories do
 			.col-xs-2
 				.well
 					=link_to category.name, category_path(category)
+	-if current_user.admin?
+		.row
+			.col-xs-3.col-xs-offset-4
+				.well
+					%h5 
+						Add new category:
+					=render "categories/form"
