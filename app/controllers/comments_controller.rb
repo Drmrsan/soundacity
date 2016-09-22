@@ -4,6 +4,12 @@ class CommentsController < ApplicationController
   	@comment = @song.comments.build(comment_params)
   	@comment.user_id = current_user.id
   	if @comment.save
+
+      # Notifications for the users
+      (@song.users.uniq - [current_user]).each do |user|
+        Notification.create(recipient: user, actor: current_user, action: "commented", notifiable: @comment)
+      end
+
   		redirect_to :back
   	else
   		redirect_to :back

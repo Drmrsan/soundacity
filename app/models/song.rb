@@ -1,12 +1,20 @@
 class Song < ActiveRecord::Base
+	# Assotiations
 	belongs_to :user
+	has_many :users, through: :comments
 	has_many :comments, dependent: :destroy
 	has_many :song_categories, dependent: :destroy
 	has_many :categories, through: :song_categories
+	
+	# Validations
 	validates :title, presence: true, length: { minimum: 3, maximum: 100 }
 	validates :user_id, presence: true
+	
+	# Uploaders
 	mount_uploader :cover, CoverUploader
 	mount_uploader :audio, AudioUploader
+	
+	#Favourites
 	acts_as_votable
 
 	def self.search(query)
