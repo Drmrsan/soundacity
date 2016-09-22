@@ -1,7 +1,8 @@
 class NotificationsController < ApplicationController
-	before_action :authenticate_user!
 
-	def index
-		@notifications = Notification.where(recipient: current_user).unread
+	def mark_as_read
+		@notifications = Notification.where(recipient: current_user)
+		@notifications.update_all(read_at: Time.zone.now)
+		redirect_to :back
 	end
 end

@@ -47,11 +47,17 @@
               %li.divider
               %li
                 =link_to "Log out", destroy_user_session_path, method: :delete
-            %li.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                %i.fa.fa-bell
-                %span.caret
-              %ul.dropdown-menu{:role => "menu"}
-                %li Notification         
+          %li.dropdown{"data-behavior"=>"notifications"}
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", "data-behavior"=> "notification-link"}
+              %i.fa.fa-bell
+              %span
+                =current_user.notifications.count
+              %span{"data-behavior" => "unread-count"}
+              %span.caret
+            %ul.dropdown-menu{:role => "menu", "data-behavior" => "notification-items"}
+              %li
+                %a{class:"dropdown-item"}
+                  -current_user.notifications.each do |notification|
+                    = link_to "#{notification.actor.username} #{notification.action} #{notification.notifiable.class.to_s.downcase}.", mark_as_read_notification_path(notification), method: :put
     /.navbar-collapse
   /.container-fluid

@@ -6,10 +6,8 @@ class CommentsController < ApplicationController
   	if @comment.save
 
       # Notifications for the users
-      (@song.users.uniq - [current_user]).each do |user|
-        Notification.create(recipient: user, actor: current_user, action: "commented", notifiable: @comment)
-      end
-
+      Notification.create(recipient: @song.user, actor: current_user, action: "commented", notifiable: @comment)
+   
   		redirect_to :back
   	else
   		redirect_to :back

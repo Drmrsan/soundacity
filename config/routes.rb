@@ -19,5 +19,9 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-  resources :notifications
+  resources :notifications do
+    member do
+      put "mark_as_read", to: "notifications#mark_as_read"
+    end
+  end
 end
