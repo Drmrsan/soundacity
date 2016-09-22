@@ -47,15 +47,15 @@
               %li.divider
               %li
                 =link_to "Log out", destroy_user_session_path, method: :delete
-          -if current_user.notifications.present?
-            %li.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                %i.fa.fa-bell
-                  =current_user.notifications.count
-              %ul.dropdown-menu{:role => "menu"}
-                %li
-                  -current_user.notifications.each do |notification|
-                    = link_to "#{notification.actor.username} has #{notification.action} on song #{time_ago_in_words(notification.created_at)} ago", "#"
+          / -if current_user.notifications.present?
+          /   %li.dropdown
+          /     %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          /       %i.fa.fa-bell
+          /         =current_user.notifications.count
+          /     %ul.dropdown-menu{:role => "menu"}
+          /       %li
+          /         -current_user.notifications.each do |notification|
+          /           = link_to "#{notification.actor.username} has #{notification.action} on song #{time_ago_in_words(notification.created_at)} ago", "#"
          
     / /.navbar-collapse
   / /.container-fluid
