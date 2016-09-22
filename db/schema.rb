@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920214041) do
+ActiveRecord::Schema.define(version: 20160922141818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,11 +39,11 @@ ActiveRecord::Schema.define(version: 20160920214041) do
     t.integer  "recipient_id"
     t.integer  "actor_id"
     t.datetime "read_at"
-    t.string   "action"
     t.integer  "notifiable_id"
     t.string   "notifiable_type"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "action"
   end
 
   create_table "song_categories", force: :cascade do |t|
