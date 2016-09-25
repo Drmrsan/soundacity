@@ -10,8 +10,13 @@ class SongsController < ApplicationController
 
   def create
     @song = current_user.songs.build(song_params)
-    
+    @users = User.all
     if @song.save
+
+      (@users.uniq - [current_user]).each do |user|
+        Notification.create(recipient: user, actor: current_user, action: "posted a", notifiable: @song)
+      end
+
       redirect_to song_path(@song), notice: "Song successfully added!"
     else
       render 'new', notice:"Ups, something went wrong!"

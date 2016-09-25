@@ -5,6 +5,8 @@ class Song < ActiveRecord::Base
 	has_many :comments, dependent: :destroy
 	has_many :song_categories, dependent: :destroy
 	has_many :categories, through: :song_categories
+
+	default_scope {order("created_at DESC")}
 	
 	# Validations
 	validates :title, presence: true, length: { minimum: 3, maximum: 100 }
