@@ -47,17 +47,26 @@
               %li.divider
               %li
                 =link_to "Log out", destroy_user_session_path, method: :delete
-          %li.dropdown{"data-behavior"=>"notifications"}
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", "data-behavior"=> "notification-link"}
-              %i.fa.fa-bell
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               %span
-                =current_user.notifications.count
-              %span{"data-behavior" => "unread-count"}
-              %span.caret
-            %ul.dropdown-menu{:role => "menu", "data-behavior" => "notification-items"}
+                -if current_user.notifications.where(read_at: nil).count > 0
+                  %i.fa.fa-bell.pink
+                -else
+                  %i.fa.fa-bell-slash
+            %ul.dropdown-menu{:role => "menu", id:"notifications"}
               %li
                 %a{class:"dropdown-item"}
                   -current_user.notifications.each do |notification|
-                    = link_to "#{notification.actor.username} #{notification.action} #{notification.notifiable.class.to_s.downcase}.", mark_as_read_notification_path(notification), method: :put
+                    -if notification.read_at == nil
+                      =link_to mark_as_read_notification_path(notification), method: :put, class:"unread_notification" do
+                        %i.fa.fa-bell
+                        = "#{notification.actor.username} #{notification.action} #{notification.notifiable.class.to_s.downcase}."
+                        
+                    -elsif notification.read_at != nil
+                      =link_to mark_as_read_notification_path(notification), method: :put, class:"read_notification" do
+                        %i.fa.fa-bell-slash-o
+                        = "#{notification.actor.username} #{notification.action} #{notification.notifiable.class.to_s.downcase}."
+                        
     /.navbar-collapse
   /.container-fluid

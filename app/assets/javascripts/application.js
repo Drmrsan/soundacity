@@ -18,7 +18,16 @@
 //= require wavesurfer-plugins
 //= require_tree .
 
-$('#myTabs a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
+
+$(function(){
+
+	$('#myTabs a').click(function (e) {
+		e.preventDefault()
+		$(this).tab('show')
+	})
+
+	// if ('<%= notification.read_at == nil %>'){
+	// 	$('.dropdown-item').html('No new notifications.');
+	// }
+
+});

@@ -9,6 +9,8 @@ body
 	background: #F2F2F2
 .white
 	background: $white
+.pink
+	color: $pink
 
 .navbar-default
 	background-color: $dark_green
@@ -175,3 +177,25 @@ ul.nav.nav-tabs
 
 p.edit_song_buttons
 	margin: 10px 0
+
+#notifications.dropdown-menu > li > a.unread_notification, 
+#notifications.dropdown-menu > li > a.read_notification
+	padding: 30px 60px
+
+#notifications.dropdown-menu > li > a.unread_notification
+	background: #f45b69
+	color: white
+
+#notifications.dropdown-menu > li > a.read_notification
+	background: #e7e7e7
+	&:hover
+		background: lighten(#e7e7e7, 5)
+
+#notifications.dropdown-menu > li > a.read_notification i
+	margin-right: 10px
+
+#notifications.dropdown-menu > li > a
+	padding: 0
+
+#notifications.dropdown-menu
+	padding: 0

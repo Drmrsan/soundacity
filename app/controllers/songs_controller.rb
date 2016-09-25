@@ -14,7 +14,7 @@ class SongsController < ApplicationController
     if @song.save
 
       (@users.uniq - [current_user]).each do |user|
-        Notification.create(recipient: user, actor: current_user, action: "posted a", notifiable: @song)
+        Notification.create(recipient: user, actor: current_user, action: "posted a", notifiable: @song, song_id: @song.id)
       end
 
       redirect_to song_path(@song), notice: "Song successfully added!"
