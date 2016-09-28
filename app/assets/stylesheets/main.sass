@@ -6,7 +6,9 @@
 
 
 body
-	background: #F2F2F2
+	background: rgba(17, 75, 95, 0.28)
+	height: 100%
+	padding-bottom: 60px
 .white
 	background: $white
 .pink
@@ -42,7 +44,7 @@ body
 .navbar-default .navbar-nav > li > a
 	color: $white	
 	&:hover
-		color: $light_green
+		color: $white
 
 .navbar-header
 	float: none
@@ -70,12 +72,18 @@ body
 
 .sign_up_button
 	border: 1px solid $white
+	background: $pink
+	&:hover
+		background: lighten($pink, 5) !important
 
 .login_button
 	margin-left: 10px
 
 .container .jumbotron
 	border-radius: 0
+
+.container.white
+	padding-bottom: 50px
 
 .jumbotron
 	background: url(header.jpg), no-repeat
@@ -85,31 +93,47 @@ body
 	margin: 0
 	position: relative
 	margin-top: -78px
-	h3
+	h4
 		color: $white
 		font-weight: 400
-		padding: 200px 0 20px 0
-		margin: 0
+		margin: 200px 0 20px 0
+		background: rgba($dark_green, .7)
+		padding: 10px 0
 	p
 		color: $white
 	.form-control
 		padding: 24px 25px
 
 h4.home_page_title
-	padding: 30px 0
+	padding: 60px 0 30px 0
+	text-align: center
 
 .recent_songs
-	padding-top: 30px
-	background: $white
+	h4
+		background: $pink
+		color: $white
+		padding: 25px 0
+		margin: 0
 	.panel
+		border-radius: 0
 		text-align: center
 		border: none
 		.panel-body
 			padding: 20px 0
+		.panel-footer
+			background: $white
+
+.form-control:focus
+	border-color: #efb9be
+	box-shadow: none
 
 
-#song
-	padding: 50px 0
+.container#song
+	margin: 30px 0
+	width: 100%
+	background: $white
+	padding: 15px 15px
+	border-radius: 5px
 	.col-xs-2,.col-xs-10
 		padding-left: 0
 		padding-right: 0
@@ -117,7 +141,7 @@ h4.home_page_title
 p.update_status
 	color: grey
 
-.song_title
+.song_content>.song_title
 	display: inline-block
 	p,h4
 		margin: 0
@@ -181,10 +205,14 @@ p.edit_song_buttons
 #notifications.dropdown-menu > li > a.unread_notification, 
 #notifications.dropdown-menu > li > a.read_notification
 	padding: 30px 60px
+	border-bottom: 1px solid #c5c1c1
 
 #notifications.dropdown-menu > li > a.unread_notification
 	background: #f45b69
 	color: white
+	border-bottom: 1px solid white
+	&:hover
+		background: lighten(#f45b69, 5)
 
 #notifications.dropdown-menu > li > a.read_notification
 	background: #e7e7e7
@@ -199,3 +227,37 @@ p.edit_song_buttons
 
 #notifications.dropdown-menu
 	padding: 0
+
+
+.footer
+	position: absolute
+	bottom: 0
+	width: 100%
+	height: 60px
+	background-color: #f5f5f5
+	ul
+		list-style: none
+
+.form_field_cover, .form_label_cover, 
+	margin-bottom: 20px
+.form_field_audio, .song_categories_fields
+	margin: 30px 0
+
+.checkbox-inline
+	margin-right: 10px
+
+.panel_new_song
+	margin-top: 50px
+.panel-default > .panel-heading
+	background-color: $dark_green
+	color: $white
+
+input[type="file"]
+	display: inline-block
+	margin-left: 10px
+
+.song_comment
+	padding: 10px
+	background: #f2f1f5
+	margin: 10px 0
+	border-radius: 5px

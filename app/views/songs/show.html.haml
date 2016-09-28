@@ -67,11 +67,11 @@
 						%hr/
 						=render @song.comments
 						
-	-if user_signed_in?
-		.row.white.song_comment_details
-			.col-xs-12
-				%p
-					=render 'comments/comment_form'
+			-if user_signed_in?
+				.row.white.song_comment_details
+					.col-xs-12
+						%p
+							=render 'comments/comment_form'
 
 :javascript
 	var wavesurfer#{@song.id} = Object.create(WaveSurfer);
