@@ -1,5 +1,13 @@
 class NotificationsController < ApplicationController
 
+	def index
+		@notifications = Notification.all.order("created_at DESC")
+	end
+
+	def show
+		
+	end
+
 	def mark_as_read
 		@notification = Notification.where(recipient: current_user)
 		@notification.update_all(read_at: Time.zone.now)

@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-  resources :notifications do
+  resources :notifications, only: [:index] do
     member do
       put "mark_as_read", to: "notifications#mark_as_read"
     end

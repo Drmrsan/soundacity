@@ -2,7 +2,10 @@ class RelationshipsController < ApplicationController
   def create
   	user = User.find(params[:followed_id])
   	current_user.follow(user)
-  	redirect_to :back
+
+      Notification.create(recipient: user, actor: current_user, action: "followed you")
+
+    redirect_to :back
   end
 
   def destroy

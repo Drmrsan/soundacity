@@ -6,7 +6,7 @@
 
 
 body
-	background: rgba(17, 75, 95, 0.7)
+	background: #F2F2F2
 	height: 100%
 	padding-bottom: 60px
 .white
@@ -15,7 +15,7 @@ body
 	color: $pink
 
 .navbar-default
-	background-color: $dark_green
+	background-color: #333333
 	border:none
 	border-color: transparent
 	border-radius: 0
@@ -63,7 +63,7 @@ body
 		padding-bottom: 8px
 
 .navbar-index-song-preview
-	background: $dark_green
+	background: #333333
 	.navbar-right
 		padding-top: 5px
 	.navbar-nav > li > a
@@ -105,9 +105,12 @@ body
 		padding: 24px 25px
 
 h4.home_page_title
-	padding: 60px 0 30px 0
+	padding: 40px 0 60px 0
 	text-align: center
-	color: $white
+	color: #333333
+	.col-xs-6
+		border: 1px solid #333333
+		padding: 10px 0
 
 .recent_songs
 	h4
@@ -135,19 +138,30 @@ h4.home_page_title
 	background: $white
 	padding: 15px 15px
 	border-radius: 5px
+	box-shadow: 0px 6px 5px -5px rgba(111,111,111, .63)
 	.col-xs-2,.col-xs-10
 		padding-left: 0
 		padding-right: 0
 
 p.update_status
 	color: grey
-
+	a
+		color: #333333
 .song_content>.song_title
 	display: inline-block
 	p,h4
 		margin: 0
-	a:hover
-		text-decoration: none
+	p>a
+		color: grey
+		font-weight: 100
+		&:hover
+			text-decoration: none
+			color: darken(grey,20)
+	h4>a
+		color: #333333
+		&:hover
+			text-decoration: none
+			color: $pink
 
 .play_button
 	display: inline-block
@@ -163,18 +177,24 @@ p.update_status
 	float: right
 	.badge
 		font-weight: normal
+		background-color: #a9a9a9
 
 .song_buttons
-	margin-top: 18px
+	margin-top: 10px
 
 .row.song_show_details
 	padding: 30px
-	background: linear-gradient(to right, #6D657F, #312E3E)
+	// background: linear-gradient(to right, #6D657F, #312E3E)
+	background: #e8a3a9
 	.song_title
 		h4 a
 			color: $white
 	.song_wave
 		margin-top: 20px
+
+.song_wave
+	margin: 10px 0
+
 
 .comments_section
 	padding: 30px 0
@@ -207,6 +227,9 @@ p.edit_song_buttons
 #notifications.dropdown-menu > li > a.read_notification
 	padding: 30px 60px
 	border-bottom: 1px solid #c5c1c1
+#notifications.dropdown-menu > li > a.dropdown_all_notification
+	padding: 20px
+	text-align: center
 
 #notifications.dropdown-menu > li > a.unread_notification
 	background: #f45b69
@@ -250,7 +273,7 @@ p.edit_song_buttons
 .panel_new_song
 	margin-top: 50px
 .panel-default > .panel-heading
-	background-color: $dark_green
+	background-color: #666666
 	color: $white
 
 input[type="file"]
@@ -266,3 +289,28 @@ input[type="file"]
 .nav-tabs > li > a
 	background: rgba(255, 255, 255, 0.65)
 
+.overlay
+	width: 100%
+	height: 33%
+	bottom: 0
+	position: absolute
+	background: rgba(255, 255, 255, 0.6)
+	margin-bottom: 10px
+	z-index: 3
+
+.overlay_show_song
+	width: 100%
+	height: 33%
+	bottom: 0
+	position: absolute
+	background: rgba(#e8a3a9, 0.6)
+	margin-bottom: 40px
+	z-index: 3
+
+.notifications_index
+	padding-top: 50px
+	text-align: center
+
+.image
+	img
+		border: 3px solid white

@@ -3,10 +3,20 @@
 	%p.update_status
 		=image_tag song.user.avatar.url(:thumb), class:"img-circle"
 		=link_to song.user.username, user_path(song.user)
-		%i  posted a #{song.title} #{time_ago_in_words(song.created_at)} ago
+		%i.small  posted a #{song.title} #{time_ago_in_words(song.created_at)} ago
 	.col-xs-2
 		=link_to (image_tag song.cover.url(:mid)), song_path(song), class:"img-responsive" if song.cover.url
-
+		.song_buttons
+			=link_to like_song_path(song), method: :put, class:"btn btn-default btn-sm" do
+				%i.fa.fa-heart
+				=song.get_upvotes.size
+			.btn.btn-default.btn-sm
+				%i.fa.fa-comments
+				%span
+					=song.comments.count
+			=link_to "#", class:"btn btn-default btn-sm" do
+				%i.fa.fa-share
+				Share
 	.col-xs-10
 		.song_content
 			.play_button
@@ -25,18 +35,7 @@
 						=sc.name
 
 			.song_wave{ :id => "wave_#{song.id.to_s}" }
-
-			.song_buttons
-				=link_to like_song_path(song), method: :put, class:"btn btn-default btn-sm" do
-					%i.fa.fa-heart
-					=song.get_upvotes.size
-				.btn.btn-default.btn-sm
-					%i.fa.fa-comments
-					%span
-						=song.comments.count
-				=link_to "#", class:"btn btn-default btn-sm" do
-					%i.fa.fa-share
-					Share
+				.overlay
 
 
 
@@ -46,12 +45,10 @@
 
 	wavesurfer#{song.id}.init({
 	    container: document.querySelector('#wave_#{song.id}'),
-	    waveColor: '#456990',
+	    waveColor: '#666666',
 	    progressColor: '#F45B69',
-	    barWidth: 2,
-			reflection: true,
-	    hideScrollbar: true,
-	    height: 90
+	    barWidth: 1,
+	    reflection: true
 	});
 
 	wavesurfer#{song.id}.load('#{ song.audio }');

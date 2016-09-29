@@ -43,7 +43,7 @@
               %li
                 %a{:href => "#"} Likes
               %li
-                %a{:href => "#"} Following
+                =link_to "Following Users", following_user_path(current_user)
               %li.divider
               %li
                 =link_to "Log out", destroy_user_session_path, method: :delete
@@ -67,6 +67,8 @@
                       =link_to mark_as_read_notification_path(notification), method: :put, class:"read_notification" do
                         %i.fa.fa-bell-slash-o
                         = "#{notification.actor.username} #{notification.action} #{notification.notifiable.class.to_s.downcase}."
+                =link_to "Show all notifications", notifications_path, class: "dropdown_all_notification"
+
                         
     /.navbar-collapse
   /.container-fluid

@@ -1,0 +1,6 @@
+.container.notifications_index
+	%h4 Recent notifications
+	%br/
+	- @notifications.each do |notification|
+		.well
+			="#{notification.actor.username} #{notification.action} #{notification.notifiable.class.to_s.downcase} #{time_ago_in_words(notification.created_at)} ago."

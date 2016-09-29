@@ -7,4 +7,8 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@song = @user.songs
 	end
+
+	def following
+		@following_users = current_user.following
+	end
 end

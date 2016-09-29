@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   	@songs = Song.all
 
   	@index = true
+
   end
 
   def collection
