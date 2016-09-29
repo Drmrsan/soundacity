@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'relationships/create'
+
+  get 'relationships/destroy'
+
   devise_for :users
   # Pages Routes
   get 'home',       to: 'songs#index'
@@ -8,7 +12,14 @@ Rails.application.routes.draw do
   # Root page of application
   root 'pages#index'
 
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :relationships, only: [:create, :destroy]
+
   resources :categories, only: [:index, :show, :create]
   
   resources :songs do

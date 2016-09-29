@@ -55,7 +55,16 @@
 				%p
 					%i.fa.fa-users 22
 				%p
-					=link_to "Follow", "#", class:"btn btn-sm btn-default btn-follow"
+					-if current_user.following?(@user)
+						=render 'users/unfollow'
+					-else
+						=render 'users/follow'
+				%p.small
+					%span
+						following
+						="(#{@user.following.count})"
+						followers
+						="(#{@user.followers.count})"
 		.col-xs-9
 			.song_description
 				%p
