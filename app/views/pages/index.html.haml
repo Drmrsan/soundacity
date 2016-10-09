@@ -1,14 +1,13 @@
-%div
-	=render 'layouts/header'
-	.recent_songs
-		%h4.text-center Hear the whats trending for free !
-		%br/
-		-@songs.each do |song|
-			.col-xs-3
-				.panel.panel-default
-					.panel-body
-						%p #{song.user.username}
-						=link_to (image_tag song.cover.url(:mid)), song_path(song)
-					.panel-footer
-						=song.title
+=render 'layouts/header'
+-# 	.recent_songs
+-# 		%h4.text-center Hear the whats trending for free !
+-# 		%br/
+-# 		-@songs.each do |song|
+-# 			.col-xs-3
+-# 				.panel.panel-default
+-# 					.panel-body
+-# 						%p #{song.user.username}
+-# 						=link_to (image_tag song.cover.url(:mid)), song_path(song)
+-# 					.panel-footer
+-# 						=song.title
 			

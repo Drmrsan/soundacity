@@ -7,11 +7,60 @@
 @import "_typography"
 @import "font-awesome"
 
+html, body
+	height: 100%
 
 body
-	background: #F2F2F2
-	height: 100%
-	padding-bottom: 60px
+	+container
+	background: linear-gradient(45deg, $purple, $light_blue) no-repeat
+
+.presentation
+	text-align: center
+	padding-top: 200px
+	.logo
+		color: $white
+		background: $light_blue
+		border-radius: 50%
+		font:
+			size: 10em
+			weight: 900
+		width: 200px
+		display: inline-block
+	.logo_heading
+		padding: 5px
+		color: $light_yellow
+		font-size: 5em
+		font-weight: 100
+	.logo_subheading
+		padding: 0 0 60px
+		color: $light_yellow
+	.small
+		font:
+			size: .8em
+		
+	.login_wrap
+		padding: 10px
+		text-align: center
+		.signup_button,
+		.login_button
+			padding: 10px 20px
+			border-radius: 10px
+			&:hover
+				text-decoration: none
+		.signup_button
+			color: $white
+			background: $dark_purple
+			margin-right: 50px
+			&:hover
+				background: darken($dark_purple, 5)
+		.login_button
+			color: $white
+			border: 1px solid $white
+			&:hover
+				background: $light_blue
+				border: 1px solid $light_blue
+
+
 .white
 	background: $white
 .pink
@@ -88,24 +137,24 @@ body
 .container.white
 	padding-bottom: 50px
 
-.jumbotron
-	background: url(header.jpg), no-repeat
-	background-position: bottom
-	background-size: cover
-	height: 500px
-	margin: 0
-	position: relative
-	margin-top: -78px
-	h4
-		color: $white
-		font-weight: 400
-		margin: 200px 0 20px 0
-		background: rgba($dark_green, .7)
-		padding: 10px 0
-	p
-		color: $white
-	.form-control
-		padding: 24px 25px
+// .jumbotron
+// 	background: url(header.jpg), no-repeat
+// 	background-position: bottom
+// 	background-size: cover
+// 	height: 500px
+// 	margin: 0
+// 	position: relative
+// 	margin-top: -78px
+// 	h4
+// 		color: $white
+// 		font-weight: 400
+// 		margin: 200px 0 20px 0
+// 		background: rgba($dark_green, .7)
+// 		padding: 10px 0
+// 	p
+// 		color: $white
+// 	.form-control
+// 		padding: 24px 25px
 
 h4.home_page_title
 	padding: 40px 0 60px 0
