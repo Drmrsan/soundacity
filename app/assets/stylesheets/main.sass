@@ -1,8 +1,8 @@
 @import "susy"
 @import "compass"
 @import "_grid"
-// @import "bootstrap-sprockets"
-// @import "bootstrap"
+@import "bootstrap-sprockets"
+@import "bootstrap"
 @import "_colors"
 @import "_typography"
 @import "font-awesome"
@@ -12,7 +12,6 @@ html, body
 
 body
 	margin: 0
-	+container
 	background: linear-gradient(45deg, $purple, $light_blue) no-repeat
 
 .registration_wrapper
@@ -32,7 +31,7 @@ body
 		font:
 			size: 10em
 			weight: 900
-		width: 240px
+		width: 205px
 		display: inline-block
 	.logo_heading
 		padding: 5px
@@ -103,6 +102,7 @@ body
 			border-radius: 40px
 			background: lighten($purple, 5)
 			cursor: pointer
+			font-size: .8em
 			&:hover
 				background: $purple
 		a.login_button
@@ -145,6 +145,11 @@ body
 	margin-bottom: 20px
 .form_field_audio, .song_categories_fields
 	margin: 30px 0
+
+.form-control, .has-error .form-control
+	border-radius: 0
+	box-shadow: none
+
 
 .white
 	background: $white
