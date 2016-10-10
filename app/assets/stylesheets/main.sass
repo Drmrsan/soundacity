@@ -1,8 +1,8 @@
 @import "susy"
 @import "compass"
 @import "_grid"
-@import "bootstrap-sprockets"
-@import "bootstrap"
+// @import "bootstrap-sprockets"
+// @import "bootstrap"
 @import "_colors"
 @import "_typography"
 @import "font-awesome"
@@ -11,12 +11,16 @@ html, body
 	height: 100%
 
 body
+	margin: 0
 	+container
 	background: linear-gradient(45deg, $purple, $light_blue) no-repeat
 
+
+// INDEX PAGE - WELCOME PAGE
+
 .presentation
 	text-align: center
-	padding-top: 200px
+	padding-top: 100px
 	.logo
 		color: $white
 		background: $light_blue
@@ -24,7 +28,7 @@ body
 		font:
 			size: 10em
 			weight: 900
-		width: 200px
+		width: 240px
 		display: inline-block
 	.logo_heading
 		padding: 5px
@@ -60,6 +64,59 @@ body
 				background: $light_blue
 				border: 1px solid $light_blue
 
+
+// SIGN UP PAGE
+
+.panel
+	background: $light_yellow
+	border-radius: 5px
+	padding: 20px
+	text-align: left
+	width: 50%
+	margin-left: 23%
+	.panel-heading
+		text-align: center
+		h2
+			font:
+				weight: 300
+			color: #748da2
+	.panel-footer
+		.login_button
+
+
+.form
+	.signup_button
+		input.btn.btn-default
+			color: white
+			border: none
+			padding: 10px 15px
+			border-radius: 5px
+			background: $purple
+			&:hover
+				background: darken($purple, 10)
+	.form-group
+		margin-bottom: 20px
+		label
+			display: block
+			color: #748da2
+			font-size: .8em
+		input
+			border: 1px solid #dadada
+			border-radius: 5px
+			padding: 10px
+			width: 95%
+		p.help-block
+			text-align: left
+			font-size: .7em
+			color: #9c9c9c
+
+.form_field_cover, .form_label_cover, 
+	display: block
+	color: #748da2
+	font-size: .8em
+	margin-bottom: 20px
+.form_field_audio, .song_categories_fields
+	margin: 30px 0
 
 .white
 	background: $white
@@ -314,10 +371,7 @@ p.edit_song_buttons
 	ul
 		list-style: none
 
-.form_field_cover, .form_label_cover, 
-	margin-bottom: 20px
-.form_field_audio, .song_categories_fields
-	margin: 30px 0
+
 
 .checkbox-inline
 	margin-right: 10px
