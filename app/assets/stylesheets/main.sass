@@ -1,5 +1,4 @@
 @import "susy"
-@import "compass"
 @import "_grid"
 @import "bootstrap-sprockets"
 @import "bootstrap"
@@ -12,7 +11,7 @@ html, body
 
 body
 	margin: 0
-	background: linear-gradient(45deg, $purple, $light_blue) no-repeat
+	background: linear-gradient(45deg, $purple, $light_blue) no-repeat fixed
 
 .registration_wrapper
 	display: flex
@@ -151,198 +150,173 @@ body
 	box-shadow: none
 
 
-.white
-	background: $white
-.pink
-	color: $pink
+// **************************************//
 
 .navbar-default
-	background-color: #333333
-	border:none
+	background-color: $white
+	border: none
 	border-color: transparent
+	box-shadow: 0px 2px 2px 0px rgb(162, 172, 175)
 	border-radius: 0
 	margin-bottom: 0
 	.navbar-brand
+		font:
+			size: 1.8em
+			weight: 600
 		color: $white
-		background: $pink
+		background: $light_blue
 		text-transform: uppercase
-		padding: 7px 15px
+		padding: 15px 19px
+		margin-top: -1px
+		border-radius: 50%
 		&:hover
 			color: $white
-			background: $pink
-
-.navbar-brand-index
-	color: $pink
-	font-size: 1.4em
-	font-weight: 600
-	padding: 7px
-	text-transform: uppercase
-	&:hover
-		color: $white
-		text-decoration: none
-	i
-		color: $white
+			background: $light_blue
 
 .navbar-default .navbar-nav > li > a
-	color: $white	
+	color: $dark_purple	
 	&:hover
-		color: $white
+		color: $light_blue
 
 .navbar-header
 	float: none
 
-.navbar-index
-	background: transparent
+.navbar
+	background: $white
 	border-bottom: 0
-	border-top: 3px solid $pink
 	z-index: 999
 	.navbar-header
 		float: none
-		padding: 15px 20px
-		margin-top: -2px
+		padding: 20px
 	.navbar-nav > li > a
 		padding-top: 8px
 		padding-bottom: 8px
 
-.navbar-index-song-preview
-	background: #333333
-	.navbar-right
-		padding-top: 5px
-	.navbar-nav > li > a
-		padding-top: 8px
-		padding-bottom: 8px
+ul.nav.navbar-nav
+	padding-top: 8px
 
-.sign_up_button
-	border: 1px solid $white
-	background: $pink
-	&:hover
-		background: lighten($pink, 5) !important
-
-.login_button
-	margin-left: 10px
-
-.container .jumbotron
-	border-radius: 0
-
-.container.white
-	padding-bottom: 50px
-
-// .jumbotron
-// 	background: url(header.jpg), no-repeat
-// 	background-position: bottom
-// 	background-size: cover
-// 	height: 500px
-// 	margin: 0
-// 	position: relative
-// 	margin-top: -78px
-// 	h4
-// 		color: $white
-// 		font-weight: 400
-// 		margin: 200px 0 20px 0
-// 		background: rgba($dark_green, .7)
-// 		padding: 10px 0
-// 	p
-// 		color: $white
-// 	.form-control
-// 		padding: 24px 25px
-
-h4.home_page_title
-	padding: 40px 0 60px 0
-	text-align: center
-	color: #333333
-	.col-xs-6
-		border: 1px solid #333333
-		padding: 10px 0
-
-.recent_songs
-	h4
-		background: $pink
-		color: $white
-		padding: 25px 0
-		margin: 0
-	.panel
-		border-radius: 0
-		text-align: center
-		border: none
-		.panel-body
-			padding: 20px 0
-		.panel-footer
-			background: $white
+form.navbar-form.navbar-left.search
+	.form-group
+		input.form-control
+			border-radius: 20px
+			border: none
+			background: lighten($light_blue, 20)
 
 .form-control:focus
 	border-color: #efb9be
 	box-shadow: none
 
+//  SONG PREVIEW PAGES
 
-.container#song
+.songs_container
+	+container
+	padding-top: 150px
+
+.song_container
+	+span(12)
 	margin: 30px 0
 	width: 100%
 	background: $white
 	padding: 15px 15px
 	border-radius: 5px
 	box-shadow: 0px 6px 5px -5px rgba(111,111,111, .63)
-	.col-xs-2,.col-xs-10
-		padding-left: 0
-		padding-right: 0
+	p.update_status
+		border-bottom: 1px solid #f2e2fb
+		padding-bottom: 10px
 
-p.update_status
-	color: grey
-	a
-		color: #333333
-.song_content>.song_title
-	display: inline-block
-	p,h4
-		margin: 0
-	p>a
-		color: grey
-		font-weight: 100
-		&:hover
-			text-decoration: none
-			color: darken(grey,20)
-	h4>a
-		color: #333333
-		&:hover
-			text-decoration: none
-			color: $pink
+	.song_user_details
+		+span(3 of 12)
 
-.play_button
-	display: inline-block
-	margin-top: -10px
-	a.btn-default
-		color: $white
-		border-color: $pink
-		border-radius: 2em
-		background: $pink
-		margin-top: -25px
+	.song_content
+		+span(9 of 12 at 3)
+		.song_title
+			display: inline-block
+			h4
+				margin-top: 0
+			p
+				margin-bottom: 7px
+		.play_button
+			display: block
+			float: left
+			margin: 5px 10px 5px 0px
+			a
+				i
+					background: $light_blue
+					padding: 15px 17px
+					border-radius: 50%
+					color: $white
+					&:hover
+						background: lighten($light_blue, 10)
+		.song_category
+			float: right
+		.song_wave
 
-.song_category
-	float: right
-	.badge
-		font-weight: normal
-		background-color: #a9a9a9
 
-.song_buttons
-	margin-top: 10px
+.overlay
+	width: 100%
+	height: 33%
+	bottom: 0
+	position: absolute
+	background: rgba(255, 255, 255, 0.6)
+	margin-bottom: 10px
+	z-index: 3
 
-.row.song_show_details
-	padding: 30px
-	// background: linear-gradient(to right, #6D657F, #312E3E)
-	background: #e8a3a9
-	.song_title
-		h4 a
-			color: $white
-	.song_wave
-		margin-top: 20px
 
-.song_wave
-	margin: 10px 0
+// p.update_status
+// 	color: grey
+// 	a
+// 		color: #333333
+// .song_content>.song_title
+// 	display: inline-block
+// 	p,h4
+// 		margin: 0
+// 	p>a
+// 		color: grey
+// 		font-weight: 100
+// 		&:hover
+// 			text-decoration: none
+// 			color: darken(grey,20)
+// 	h4>a
+// 		color: #333333
+// 		&:hover
+// 			text-decoration: none
+// 			color: $pink
+
+// .play_button
+// 	display: inline-block
+// 	margin-top: -10px
+// 	a.btn-default
+// 		color: $white
+// 		border-color: $pink
+// 		border-radius: 2em
+// 		background: $pink
+// 		margin-top: -25px
+
+// .song_category
+// 	float: right
+// 	.badge
+// 		font-weight: normal
+// 		background-color: #a9a9a9
+
+// .song_buttons
+// 	margin-top: 10px
+
+// .row.song_show_details
+// 	padding: 30px
+// 	// background: linear-gradient(to right, #6D657F, #312E3E)
+// 	background: #e8a3a9
+// 	.song_title
+// 		h4 a
+// 			color: $white
+// 	.song_wave
+// 		margin-top: 20px
+
+// .song_wave
+// 	margin: 10px 0
 
 
 .comments_section
 	padding: 30px 0
-
-.song_user_details
-	padding-top: 50px
 
 .btn-follow
 	background: $pink
@@ -427,15 +401,6 @@ input[type="file"]
 
 .nav-tabs > li > a
 	background: rgba(255, 255, 255, 0.65)
-
-.overlay
-	width: 100%
-	height: 33%
-	bottom: 0
-	position: absolute
-	background: rgba(255, 255, 255, 0.6)
-	margin-bottom: 10px
-	z-index: 3
 
 .overlay_show_song
 	width: 100%

@@ -1,10 +1,13 @@
 
-.container#song
+.song_container
 	%p.update_status
 		=image_tag song.user.avatar.url(:thumb), class:"img-circle"
 		=link_to song.user.username, user_path(song.user)
 		%i.small  posted a #{song.title} #{time_ago_in_words(song.created_at)} ago
-	.col-xs-2
+
+
+
+	.song_user_details
 		=link_to (image_tag song.cover.url(:mid)), song_path(song), class:"img-responsive" if song.cover.url
 		.song_buttons
 			=link_to like_song_path(song), method: :put, class:"btn btn-default btn-sm" do
@@ -17,38 +20,35 @@
 			=link_to "#", class:"btn btn-default btn-sm" do
 				%i.fa.fa-share
 				Share
-	.col-xs-10
-		.song_content
-			.play_button
-				=link_to "", :onclick => "wavesurfer#{song.id}.playPause(); return false", class:"btn btn-default btn-lg" do
-					%i.fa.fa-play
+	.song_content
+		.play_button
+			=link_to "", :onclick => "wavesurfer#{song.id}.playPause(); return false" do
+				%i.fa.fa-play
 
-			.song_title
-				%p
-					=link_to song.user.username, user_path(song.user)
-				%h4
-					=link_to song.title, song_path(song)
+		.song_title
+			%p
+				=link_to song.user.username, user_path(song.user)
+			%h4
+				=link_to song.title, song_path(song)
 
-			.song_category
-				-song.categories.each do |sc|
-					%span.badge
-						=sc.name
+		.song_category
+			-song.categories.each do |sc|
+				%span.badge
+					=sc.name
 
-			.song_wave{ :id => "wave_#{song.id.to_s}" }
-				.overlay
+		.song_wave{ :id => "wave_#{song.id.to_s}" }
+			.overlay
 
+			:javascript
 
+				var wavesurfer#{song.id} = Object.create(WaveSurfer);
 
-:javascript
+				wavesurfer#{song.id}.init({
+				    container: document.querySelector('#wave_#{song.id}'),
+				    waveColor: '#666666',
+				    progressColor: '#F45B69',
+				    barWidth: 1,
+				    reflection: true
+				});
 
-	var wavesurfer#{song.id} = Object.create(WaveSurfer);
-
-	wavesurfer#{song.id}.init({
-	    container: document.querySelector('#wave_#{song.id}'),
-	    waveColor: '#666666',
-	    progressColor: '#F45B69',
-	    barWidth: 1,
-	    reflection: true
-	});
-
-	wavesurfer#{song.id}.load('#{ song.audio }');
+				wavesurfer#{song.id}.load('#{ song.audio }');
