@@ -9,17 +9,7 @@
 
 	.song_user_details
 		=link_to (image_tag song.cover.url(:mid)), song_path(song), class:"img-responsive" if song.cover.url
-		.song_buttons
-			=link_to like_song_path(song), method: :put, class:"btn btn-default btn-sm" do
-				%i.fa.fa-heart
-				=song.get_upvotes.size
-			.btn.btn-default.btn-sm
-				%i.fa.fa-comments
-				%span
-					=song.comments.count
-			=link_to "#", class:"btn btn-default btn-sm" do
-				%i.fa.fa-share
-				Share
+
 	.song_content
 		.play_button
 			=link_to "", :onclick => "wavesurfer#{song.id}.playPause(); return false" do
@@ -37,18 +27,31 @@
 					=sc.name
 
 		.song_wave{ :id => "wave_#{song.id.to_s}" }
-			.overlay
+			.wave_overlay
 
-			:javascript
+		.song_buttons
+			=link_to like_song_path(song), method: :put, class:"btn btn-default btn-sm like_button" do
+				%i.fa.fa-heart
+				=song.get_upvotes.size
+			.btn.btn-default.btn-sm.like_button
+				%i.fa.fa-comments
+				%span
+					=song.comments.count
+			=link_to "#", class:"btn btn-default btn-sm like_button" do
+				%i.fa.fa-share
+				Share
 
-				var wavesurfer#{song.id} = Object.create(WaveSurfer);
 
-				wavesurfer#{song.id}.init({
-				    container: document.querySelector('#wave_#{song.id}'),
-				    waveColor: '#666666',
-				    progressColor: '#F45B69',
-				    barWidth: 1,
-				    reflection: true
-				});
+:javascript
 
-				wavesurfer#{song.id}.load('#{ song.audio }');
+	var wavesurfer#{song.id} = Object.create(WaveSurfer);
+
+	wavesurfer#{song.id}.init({
+	    container: document.querySelector('#wave_#{song.id}'),
+	    waveColor: '#49afc6',
+	    progressColor: '#B388EB',
+	    barWidth: 1,
+	    reflection: true
+	});
+
+	wavesurfer#{song.id}.load('#{ song.audio }');

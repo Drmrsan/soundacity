@@ -20,12 +20,12 @@
 				.overlay_show_song
 			.song_buttons
 				-if user_signed_in?
-					=link_to like_song_path(@song), method: :put, class:"btn btn-default btn-sm" do
+					=link_to like_song_path(@song), method: :put, class:"like_button" do
 						%i.fa.fa-heart
 						%span 
 							=@song.get_upvotes.size
 				-else
-					.btn.btn-default.btn-sm
+					.like_button
 						%i.fa.fa-heart
 							%span 
 								=@song.get_upvotes.size

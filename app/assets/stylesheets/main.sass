@@ -11,7 +11,7 @@ html, body
 
 body
 	margin: 0
-	background: linear-gradient(45deg, $purple, $light_blue) no-repeat fixed
+	background: linear-gradient(45deg, $medium_purple, $light_blue) no-repeat fixed
 
 .registration_wrapper
 	display: flex
@@ -174,9 +174,22 @@ body
 			background: $light_blue
 
 .navbar-default .navbar-nav > li > a
-	color: $dark_purple	
+	color: $dark_purple
 	&:hover
-		color: $light_blue
+		color: darken($dark_purple, 5)
+
+.navbar-right li a.upload_button,
+.navbar-right li a.profile_button
+	color: $dark_purple
+	border-radius: 20px
+	border: 1px solid $dark_purple
+	&:hover
+		border: 1px solid $dark_purple
+		background: $dark_purple
+		color: $white
+
+.navbar-nav > li > .dropdown-menu
+	margin-top: 27px
 
 .navbar-header
 	float: none
@@ -212,20 +225,32 @@ form.navbar-form.navbar-left.search
 	+container
 	padding-top: 150px
 
+.song_wave>wave>wave
+	border-right: none !important
+
 .song_container
 	+span(12)
 	margin: 30px 0
 	width: 100%
+	position: relative
 	background: $white
 	padding: 15px 15px
 	border-radius: 5px
-	box-shadow: 0px 6px 5px -5px rgba(111,111,111, .63)
+	box-shadow: 0px 15px 50px -5px rgba(111,111,111, .63)
 	p.update_status
 		border-bottom: 1px solid #f2e2fb
 		padding-bottom: 10px
 
+	.song_user_details,
+	.song_content
+		padding: 30px 8px
+
 	.song_user_details
 		+span(3 of 12)
+		text-align: center
+		img
+			border: 3px solid $light_blue
+			border-radius: 5px
 
 	.song_content
 		+span(9 of 12 at 3)
@@ -251,68 +276,33 @@ form.navbar-form.navbar-left.search
 			float: right
 		.song_wave
 
-
-.overlay
-	width: 100%
-	height: 33%
-	bottom: 0
+.wave_overlay
+	+container(50em)
 	position: absolute
-	background: rgba(255, 255, 255, 0.6)
-	margin-bottom: 10px
+	height: 65px
+	width: 100%
+	margin-top: 65px
 	z-index: 3
+	background: rgba($white, .6)
+	
+.btn.like_button
+	background: $light_blue
+	border: none
+	border-radius: 20px
+	padding: 10px
+	color: $white
+	&:hover
+		background: darken($light_blue, 5)
+
+.song_buttons
+	padding-top: 20px
+	float: right
+	
 
 
-// p.update_status
-// 	color: grey
-// 	a
-// 		color: #333333
-// .song_content>.song_title
-// 	display: inline-block
-// 	p,h4
-// 		margin: 0
-// 	p>a
-// 		color: grey
-// 		font-weight: 100
-// 		&:hover
-// 			text-decoration: none
-// 			color: darken(grey,20)
-// 	h4>a
-// 		color: #333333
-// 		&:hover
-// 			text-decoration: none
-// 			color: $pink
 
-// .play_button
-// 	display: inline-block
-// 	margin-top: -10px
-// 	a.btn-default
-// 		color: $white
-// 		border-color: $pink
-// 		border-radius: 2em
-// 		background: $pink
-// 		margin-top: -25px
 
-// .song_category
-// 	float: right
-// 	.badge
-// 		font-weight: normal
-// 		background-color: #a9a9a9
 
-// .song_buttons
-// 	margin-top: 10px
-
-// .row.song_show_details
-// 	padding: 30px
-// 	// background: linear-gradient(to right, #6D657F, #312E3E)
-// 	background: #e8a3a9
-// 	.song_title
-// 		h4 a
-// 			color: $white
-// 	.song_wave
-// 		margin-top: 20px
-
-// .song_wave
-// 	margin: 10px 0
 
 
 .comments_section

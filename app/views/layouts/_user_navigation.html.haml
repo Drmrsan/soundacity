@@ -21,7 +21,7 @@
           -# %button.btn.btn-default{:type => "submit"} Submit
         %ul.nav.navbar-nav.navbar-right
           %li
-            =link_to "Upload", new_song_path
+            =link_to "Upload", new_song_path, class:"upload_button"
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               %span
@@ -33,18 +33,18 @@
                 =current_user.username
               %span.caret
             %ul.dropdown-menu{:role => "menu"}
-              %li
+              %li.user_menu
                 =link_to "Profile", edit_user_registration_path
-              %li
+              %li.user_menu
                 =link_to "Users List", users_path(@user)
-              %li
+              %li.user_menu
                 =link_to "Categories List", categories_path
-              %li
+              %li.user_menu
                 %a{:href => "#"} Likes
-              %li
+              %li.user_menu
                 =link_to "Following Users", following_user_path(current_user)
               %li.divider
-              %li
+              %li.user_menu
                 =link_to "Log out", destroy_user_session_path, method: :delete
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
