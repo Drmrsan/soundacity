@@ -30,7 +30,7 @@
 			.wave_overlay
 
 		.song_buttons
-			=link_to like_song_path(song), method: :put, class:"btn btn-default btn-sm like_button" do
+			=link_to like_song_path(song), method: :put, class:"btn btn-default btn-sm like_button heart" do
 				%i.fa.fa-heart
 				=song.get_upvotes.size
 			.btn.btn-default.btn-sm.like_button

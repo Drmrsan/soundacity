@@ -1,8 +1,8 @@
-.row.song_show_details
-	.col-xs-8
+.song_show_page
+	.song_container
 		.song_content
 			.play_button
-				=link_to "", :onclick => "wavesurfer#{@song.id}.playPause(); return false", class:"btn btn-default btn-lg" do
+				=link_to "", :onclick => "wavesurfer#{@song.id}.playPause(); return false", class:"" do
 					%i.fa.fa-play
 
 			.song_title
@@ -17,27 +17,26 @@
 						=sc.name
 
 			.song_wave{ :id => "wave_#{@song.id.to_s}" }
-				.overlay_show_song
+				.show_page_wave_overlay
+
 			.song_buttons
 				-if user_signed_in?
-					=link_to like_song_path(@song), method: :put, class:"like_button" do
+					=link_to like_song_path(@song), method: :put, class:"btn btn-default btn-sm like_button heart" do
 						%i.fa.fa-heart
 						%span 
 							=@song.get_upvotes.size
 				-else
-					.like_button
+					.btn.btn-default.btn-sm.like_button
 						%i.fa.fa-heart
 							%span 
 								=@song.get_upvotes.size
 
-				.btn.btn-default.btn-sm
+				.btn.btn-default.btn-sm.like_button
 					%i.fa.fa-comments
 					%span
 						=@song.comments.count
 
-
-	.col-xs-4.text-center
-		.image
+		.song_image.text-center
 			=image_tag @song.cover.url(:show_page) if @song.cover.url
 		-if user_signed_in?
 			%p.edit_song_buttons
@@ -45,9 +44,9 @@
 					=link_to "Edit", edit_song_path(@song), class:"btn btn-default btn-sm"
 					=link_to "Delete", song_path(@song), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-follow btn-sm"
 	
-.row.white.song_user_details
-	.col-xs-3.text-center
-		.well
+
+	.song_details_container
+		.song_user_details
 			=image_tag @user.avatar.url(:small), class:"img-circle"
 			%h5.text-muted
 				= link_to @user.username, "#"
@@ -65,37 +64,37 @@
 					="(#{@user.following.count})"
 					followers
 					="(#{@user.followers.count})"
-	.col-xs-9
+
 		.song_description
 			%p
 				=@song.description
-		.comments_section
-			-if @song.comments.present?
-				%p.text-muted
-					Recent comments
-					%hr/
-					=render @song.comments
-					
-		-if user_signed_in?
-			.row.white.song_comment_details
-				.col-xs-12
-					%p
-						=render 'comments/comment_form'
+			.comments_section
+				-if @song.comments.present?
+					%p.text-muted
+						Recent comments
+						%hr/
+						=render @song.comments
+						
+			-if user_signed_in?
+				.row.white.song_comment_details
+					.col-xs-12
+						%p
+							=render 'comments/comment_form'
 
-:javascript
-	var wavesurfer#{@song.id} = Object.create(WaveSurfer);
+		:javascript
+			var wavesurfer#{@song.id} = Object.create(WaveSurfer);
 
-	wavesurfer#{@song.id}.init({
-	    container: document.querySelector('#wave_#{@song.id}'),
-	    waveColor: 'white',
-	    progressColor: '#F45B69',
-	    barWidth: 2,
-			reflection: true,
-	    hideScrollbar: true,
-	    height: 200
-	});
+			wavesurfer#{@song.id}.init({
+			    container: document.querySelector('#wave_#{@song.id}'),
+					waveColor: '#49afc6',
+					progressColor: '#B388EB',
+			    barWidth: 2,
+					reflection: true,
+			    hideScrollbar: true,
+			    height: 200
+			});
 
-	wavesurfer#{@song.id}.load('#{ @song.audio }');
+			wavesurfer#{@song.id}.load('#{ @song.audio }');
 
 
 

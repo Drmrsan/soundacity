@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+   # Root page of application
+  root 'pages#index'
+
   get 'relationships/create'
 
   get 'relationships/destroy'
@@ -9,8 +12,6 @@ Rails.application.routes.draw do
   get 'home',       to: 'songs#index'
   get 'collection', to: 'pages#collection'
 
-  # Root page of application
-  root 'pages#index'
 
   resources :users, only: [:index, :show] do
     member do
