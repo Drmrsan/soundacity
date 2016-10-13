@@ -26,8 +26,10 @@ $(function(){
 		$(this).tab('show')
 	})
 
-	// if ('<%= notification.read_at == nil %>'){
-	// 	$('.dropdown-item').html('No new notifications.');
-	// }
+	setTimeout(function(){
+		$('.notification').fadeOut('slow', function(){
+			$(this).remove();
+		});
+	}, 3000);
 
 });

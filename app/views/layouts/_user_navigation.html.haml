@@ -50,7 +50,7 @@
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               %span
                 -if current_user.notifications.where(read_at: nil).count > 0
-                  %i.fa.fa-bell.pink
+                  %i.fa.fa-bell.purple
                 -else
                   %i.fa.fa-bell-slash
             %ul.dropdown-menu{:role => "menu", id:"notifications"}

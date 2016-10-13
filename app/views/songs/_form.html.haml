@@ -1,12 +1,14 @@
 =simple_form_for @song, html: { multipart: true } do |f|
-	=f.input :title, class:"form-control"
-	=f.input :description, class:"form-control"
-	=f.label :cover, label: "Upload cover image for song", class:"form_label_cover"
-	=f.file_field :cover, class:"form_field_cover"
-	=f.input :remote_cover_url, label: "or paste cover URL here"
-	=f.label :audio, label: "Upload song", class:"form_field_audio"
-	=f.file_field :audio
-	.song_categories_fields
-		=f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb|
-			-cb.label(class:"checkbox-inline input_checkbox") { cb.check_box(class:"checkbox") + cb.text}
-	=f.button :submit, "Add song to your collection", class:"btn btn-follow"
+	.form
+		=f.input :title, class:"form-control"
+		=f.input :description, class:"form-control"
+		=f.label :cover, label: "Upload cover image for song", class:"form_label_cover"
+		=f.file_field :cover, class:"form_field_cover"
+		=f.input :remote_cover_url, label: "or paste cover URL here"
+		=f.label :audio, label: "Upload song", class:"form_field_audio"
+		=f.file_field :audio, class:"form_field_audio"
+		.song_categories_fields
+			=f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb|
+				-cb.label(class:"checkbox-inline input_checkbox") { cb.check_box(class:"checkbox") + cb.text}
+		.login_wrap
+			=f.button :submit, "Add song to your collection", class:"login_button"

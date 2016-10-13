@@ -1,3 +1,3 @@
 =simple_form_for ([@song, @song.comments.build]) do |f|
 	=f.input :content, label: "Leave comment", placeholder: "Write comment..."
-	=f.button :submit
+	=f.button :submit, class:"like_button"

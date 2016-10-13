@@ -13,13 +13,26 @@ body
 	margin: 0
 	background: linear-gradient(0deg, $white, $light_blue) no-repeat fixed
 
+.purple
+	color: $pink
+
+.home_page
+	margin-top: 130px
+	h4.home_page_title
+		color: white
+		text-decoration: underline
+
 .index_page_gradient
 	background: linear-gradient(45deg, $light_blue, $purple) no-repeat fixed
 
-.registration_wrapper
+.registration_wrapper,
+.new_song_wrapper
 	display: flex
 	justify-content: center
-	padding-top: 50px
+
+.registration_wrapper,
+.new_song_wrapper
+	padding-top: 120px
 
 // INDEX PAGE - WELCOME PAGE
 
@@ -124,7 +137,7 @@ body
 		label
 			color: #748da2
 			font-size: .8em
-		input
+		input, textarea
 			border: none
 			border-bottom: 3px solid #ede4fb
 			padding: 10px
@@ -140,12 +153,12 @@ body
 			font-size: .7em
 			color: #9c9c9c
 
-.form_field_cover, .form_label_cover, 
+.form_field_cover, .form_label_cover, .form_field_audio, .song_categories_fields
 	display: block
 	color: #748da2
 	font-size: .8em
 	margin-bottom: 20px
-.form_field_audio, .song_categories_fields
+.song_categories_fields
 	margin: 30px 0
 
 .form-control, .has-error .form-control
@@ -208,6 +221,9 @@ body
 		padding-top: 8px
 		padding-bottom: 8px
 
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus
+	background-color: $white
+
 ul.nav.navbar-nav
 	padding-top: 8px
 
@@ -226,7 +242,7 @@ form.navbar-form.navbar-left.search
 
 .songs_container
 	+container
-	padding-top: 150px
+	padding-top: 30px
 
 .song_wave>wave>wave
 	border-right: none !important
@@ -362,18 +378,29 @@ input[type="submit"].btn.like_button.heart
 
 .song_comment
 	padding: 10px
-	background: rgb(255, 245, 255)
+	background: #f1f2f3
 	margin: 10px 0
 	border-radius: 5px
 
-.btn-follow
-	background: $pink
-	color: $white
-	border-color: $pink
-	&:hover
-		background: lighten($pink, 5)
-		color: $white
-		border-color: lighten($pink, 5)
+textarea.form-control
+	border: none
+	border-bottom: 3px solid $light_blue
+
+// NEW SONG FORM
+
+.login_wrap
+	input.btn.btn-default.login_button
+		margin: 0
+		font-size: .8em
+		color: white
+		border: none
+		padding: 13px 30px
+		border-radius: 40px
+		background: lighten($light_blue, 5)
+		cursor: pointer
+		text-decoration: none
+		&:hover
+			background: $light_blue
 
 .user_show
 	margin-top: 30px
@@ -403,7 +430,7 @@ p.edit_song_buttons
 		background: lighten(#f45b69, 5)
 
 #notifications.dropdown-menu > li > a.read_notification
-	background: #e7e7e7
+	background: #edfbfe
 	&:hover
 		background: lighten(#e7e7e7, 5)
 
@@ -460,3 +487,15 @@ input[type="file"]
 .image
 	img
 		border: 3px solid white
+
+.alert
+	padding: 35px
+	border: none
+	text-align: center
+	background: rgba(255, 218, 255, 0.8)
+
+.notification
+	position: absolute
+	top: 0
+	z-index: 1000
+	width: 100%

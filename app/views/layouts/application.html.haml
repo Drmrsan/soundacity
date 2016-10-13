@@ -8,6 +8,7 @@
 		= csrf_meta_tags
 
 		%body{ class:"#{'index_page_gradient' if @index }" }
+		= render 'layouts/messages'
 		= render 'layouts/navigation'
 		= yield
 		= #render 'layouts/footer'
