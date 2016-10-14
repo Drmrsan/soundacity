@@ -9,7 +9,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'susy', '~> 2.2', '>= 2.2.12'
-# gem 'compass-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml-rails', '~> 0.9.0'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
@@ -22,6 +21,7 @@ gem 'wavesurfer', '~> 0.0.2'
 gem 'wavesurfer-rails'
 gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 gem 'acts_as_votable', '~> 0.10.0'
+gem "figaro"
 
 group :development, :test do
   gem 'byebug'

@@ -71,6 +71,8 @@ GEM
     erubis (2.7.0)
     excon (0.52.0)
     execjs (2.7.0)
+    figaro (1.1.1)
+      thor (~> 0.14)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.38.0)
@@ -339,6 +341,7 @@ DEPENDENCIES
   carrierwave (>= 1.0.0.beta, < 2.0)
   coffee-rails (~> 4.1.0)
   devise (~> 4.2)
+  figaro
   fog
   font-awesome-rails (~> 4.6, >= 4.6.3.1)
   haml-rails (~> 0.9.0)
