@@ -1,9 +1,9 @@
-.container.text-center
-	%h4 Users list
-	%br/
-	-@users.each do |user|
-		.row
-			.col-xs-2.col-xs-offset-5.well
+.users_index
+	.container.text-center
+		%h4 Users list
+		%br/
+		-@users.each do |user|
+			.well.user_index
 				%p
 					=link_to user.username, user_path(user)
 				=image_tag user.avatar.url(:small)

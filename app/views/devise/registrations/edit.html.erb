@@ -1,6 +1,7 @@
 <div class="registration_wrapper">
   <div class="panel">
     <div class="panel-heading">
+      <%= image_tag(current_user.avatar.url(:small)) %>
       <h2>Edit <%= current_user.username %>'s profile details</h2>
     </div>  
     <div class="panel-body">

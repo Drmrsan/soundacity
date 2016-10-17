@@ -31,7 +31,9 @@ body
 	justify-content: center
 
 .registration_wrapper,
-.new_song_wrapper
+.new_song_wrapper,
+.collection_wrapper,
+.users_index
 	padding-top: 120px
 
 // INDEX PAGE - WELCOME PAGE
@@ -85,6 +87,28 @@ body
 
 
 // SIGN UP PAGE
+.collection_wrapper
+
+.panel_collection
+	+span(3)
+	background: $white
+	border-radius: 5px
+	text-align: center
+	margin-right: 20px
+	box-shadow: 0px 0px 24px 0px #748da4
+	.panel-heading
+		text-align: center
+		h2
+			font:
+				weight: 600
+			color: #748da2
+	.panel-heading
+		padding-top: 20px
+	.panel-footer
+		padding: 20px
+		a
+			text-decoration: none
+			font-size: .8em
 
 .panel
 	background: $white
@@ -402,9 +426,6 @@ textarea.form-control
 		&:hover
 			background: $light_blue
 
-.user_show
-	margin-top: 30px
-
 #favourites, #bbcat
 	margin-top: 30px
 
@@ -499,3 +520,18 @@ input[type="file"]
 	top: 0
 	z-index: 1000
 	width: 100%
+
+// USERS
+.users_index
+	margin: 0 auto
+	+container
+	.panel_collection
+		width: autod
+		display: block
+
+.user_details_showpage
+	text-align: center
+.user_songs
+	// +span(9 at 3)
+	.panel_collection
+		width: auto
