@@ -1,5 +1,6 @@
 =simple_form_for @song, html: { multipart: true } do |f|
 	.form
+		=render 'layouts/error_messages', obj: @song
 		=f.input :title, class:"form-control"
 		=f.input :description, class:"form-control"
 		=f.label :cover, label: "Upload cover image for song", class:"form_label_cover"

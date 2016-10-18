@@ -1,0 +1,8 @@
+#error_explanation
+  - if obj.errors.any?
+    .alert.alert-danger
+      The form contains #{pluralize(obj.errors.count, "error")}.
+    %ul.alert.alert-danger
+      -obj.errors.full_messages.each do |msg|
+        %li
+          =msg

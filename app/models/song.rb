@@ -11,6 +11,8 @@ class Song < ActiveRecord::Base
 	
 	# Validations
 	validates :title, presence: true, length: { minimum: 3, maximum: 100 }
+	validates :description, presence: true, length: { minimum: 3, maximum: 2000}
+	validates :audio, presence: true
 	validates :user_id, presence: true
 	
 	# Uploaders
