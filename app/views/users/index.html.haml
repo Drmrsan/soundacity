@@ -1,9 +1,14 @@
-.users_index
-	.container.text-center
-		%h4 Users list
-		%br/
-		-@users.each do |user|
-			.well.user_index
-				%p
-					=link_to user.username, user_path(user)
-				=image_tag user.avatar.url(:small)
+.users_index_page
+	-@users.each do |user|	
+		.registration_wrapper_users
+			.panel
+				.panel-heading
+					=image_tag(user.avatar.url(:small), class: "img-circle")
+					%h2
+						= link_to user.username, user_path(user)
+					%p.small
+						%span
+							following
+							="(#{user.following.count})"
+							followers
+							="(#{user.followers.count})"

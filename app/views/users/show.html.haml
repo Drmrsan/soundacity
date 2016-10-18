@@ -1,20 +1,48 @@
-.users_index
+.registration_wrapper
+	.panel
+		.panel-heading
+			=image_tag(@user.avatar.url(:small), class: "img-circle")
+			%h2
+				="#{@user.username}'s profile"
+			%p.small
+				%span
+					following
+					="(#{@user.following.count})"
+					followers
+					="(#{@user.followers.count})"
+			%p
+				-if user_signed_in?
+					-if current_user.following?(@user)
+						=render 'users/unfollow'
+					-else
+						=render 'users/follow'
 
-	.user_details_showpage
-		=image_tag @user.avatar.url(:small), class:"img-circle"
-		%h5.text-muted
-			= link_to @user.username, "#"
-		%p
-			%i.fa.fa-users 22
-		%p
-			=link_to "Follow", "#", class:"btn btn-sm btn-default btn-follow"
+		.panel-body.text-center
+			%h4 Latest songs uploaded by this user.
+			%ul
+				-@user.songs.each do |song|
+					%li
+						=link_to song.title, song_path(song)
 
-	.user_songs	
-		%h4 Songs uploaded by #{@user.username}
-		%br/
-		-@song.each do |song|
-			.panel_collection
-				.panel-body
-					=link_to (image_tag song.cover.url(:mid)), song_path(song)
-				.panel-fotter
-					=song.title
+
+
+-# .users_index
+
+-# 	.user_details_showpage
+-# 		=image_tag @user.avatar.url(:small), class:"img-circle"
+-# 		%h5.text-muted
+-# 			= link_to @user.username, "#"
+-# 		%p
+-# 			%i.fa.fa-users 22
+-# 		%p
+-# 			=link_to "Follow", "#", class:"btn btn-sm btn-default btn-follow"
+
+	-# .user_songs	
+	-# 	%h4 Songs uploaded by #{@user.username}
+	-# 	%br/
+	-# 	-@song.each do |song|
+	-# 		.panel_collection
+	-# 			.panel-body
+	-# 				=link_to (image_tag song.cover.url(:mid)), song_path(song)
+	-# 			.panel-fotter
+	-# 				=song.title

@@ -1,4 +1,8 @@
-.container
+.users_index_page
 	- @following_users.each do |following_users|
-		.well
-			=following_users.username
+		.registration_wrapper_users
+			.panel
+				.panel-heading
+					=image_tag(following_users.avatar.url(:small), class: "img-circle")
+					%h2
+						= link_to following_users.username, '#'

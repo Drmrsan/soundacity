@@ -26,14 +26,17 @@ body
 	background: linear-gradient(45deg, $light_blue, $purple) no-repeat fixed
 
 .registration_wrapper,
+.registration_wrapper_users,
 .new_song_wrapper
 	display: flex
 	justify-content: center
 
 .registration_wrapper,
+.users_index_page,
 .new_song_wrapper,
 .collection_wrapper,
-.users_index
+.users_index,
+.categories_index_page
 	padding-top: 120px
 
 // INDEX PAGE - WELCOME PAGE
@@ -522,16 +525,24 @@ input[type="file"]
 	width: 100%
 
 // USERS
-.users_index
-	margin: 0 auto
-	+container
-	.panel_collection
-		width: autod
-		display: block
 
-.user_details_showpage
-	text-align: center
-.user_songs
-	// +span(9 at 3)
-	.panel_collection
-		width: auto
+.panel-body 
+	h4
+		color: #748DA2
+		font-weight: 600
+		text-decoration: underline
+	ul
+		list-style: none
+		padding-left: 0
+
+//  CATEGORIES
+
+.categories_index_page
+	h4
+		color: #748DA2
+		font-weight: 600
+		text-decoration: underline
+	.well
+		background: $white
+		border: none
+		border-color: $white
